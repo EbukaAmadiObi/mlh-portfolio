@@ -62,7 +62,7 @@ def inject_nav_pages():
 
 @app.route('/')
 def index():
-    return render_template('index.html', title="MLH Fellow", url=os.getenv("URL"))
+    return render_template('index.html', title="Ebuka's Portfolio", url=os.getenv("URL"))
 
 @app.route('/about')
 def about():
