@@ -1,13 +1,24 @@
 import os
+import logging
+import json
+
 from datetime import datetime
 from flask import Flask, render_template, request, jsonify, url_for, redirect
 from dotenv import load_dotenv
-import logging
-import json
+from peewee import *
 
 load_dotenv()
 app = Flask(__name__)
 logging.basicConfig(level=logging.INFO)
+
+mydb = MySQLDatabase(os.getenv("MYSQL_DATABASE"),
+    user=os.getenv("MYSQL_USER"),
+    password = os.getenv("MYSQL_PASSWORD"),
+    host=os.getenv("MYSQL_HOST"),
+    port=3306
+)
+
+print(mydb)
 
 about_me = "This is sample text. You can click here and replace with actual content about yourself." 
 
