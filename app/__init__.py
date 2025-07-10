@@ -76,6 +76,7 @@ NAV_PAGES = [
     {'endpoint': 'education', 'name': 'Education'},
     {'endpoint': 'hobbies', 'name': 'Hobbies'},
     {'endpoint': 'travel', 'name': 'Travel'},
+    {'endpoint': 'timeline', 'name': 'Timeline'},
 ]
 
 @app.context_processor
@@ -103,8 +104,8 @@ def work():
 @app.route('/add_work', methods=['POST'])
 def add_work():
     
-    date1 = datetime.strptime(request.form['date1'], "%Y-%m-%d").strftime("%b %Y")
-    date2 = datetime.strptime(request.form['date2'], "%Y-%m-%d").strftime("%b %Y")
+    date1 = datetime.datetime.strptime(request.form['date1'], "%Y-%m-%d").strftime("%b %Y")
+    date2 = datetime.datetime.strptime(request.form['date2'], "%Y-%m-%d").strftime("%b %Y")
 
     work_experiences.append({
         'job_title': request.form['job_title'],
@@ -121,8 +122,8 @@ def education():
 @app.route('/add_education', methods=['POST'])
 def add_education():
     
-    year1 = datetime.strptime(request.form['year1'], "%Y-%m-%d").strftime("%Y")
-    year2 = 'Present' if request.form.get('currently_attending') else datetime.strptime(request.form['year2'], "%Y-%m-%d").strftime("%Y")
+    year1 = datetime.datetime.strptime(request.form['year1'], "%Y-%m-%d").strftime("%Y")
+    year2 = 'Present' if request.form.get('currently_attending') else datetime.datetime.strptime(request.form['year2'], "%Y-%m-%d").strftime("%Y")
 
     education_history.append({
         'degree': request.form['degree'],
@@ -223,6 +224,15 @@ def upload_file():
             app.logger.error(f"Failed to save file: {e}")
             return jsonify({'error': str(e)}), 500
         
+@app.route('/timeline')
+def timeline():
+    timeline_posts = []
+    for p in TimelinePost.select().order_by(TimelinePost.created_at.desc()):
+        post_dict = model_to_dict(p)
+        post_dict["formatted_date"] = p.created_at.strftime('%B %d, %Y')
+        timeline_posts.append(post_dict)
+    return render_template('timeline.html', title="Timeline", url=os.getenv("URL"), timeline_posts=timeline_posts)
+
 @app.route('/api/timeline_post' , methods=['POST'])
 def post_time_line_post():
     name = request.form['name']
@@ -230,7 +240,7 @@ def post_time_line_post():
     content = request.form['content']
     timeline_post = TimelinePost.create(name=name, email=email, content=content)
 
-    return model_to_dict(timeline_post)
+    return redirect(url_for('timeline'))
 
 @app.route('/api/timeline_post', methods=['GET'])
 def get_time_line_post():

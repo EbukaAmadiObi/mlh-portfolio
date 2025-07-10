@@ -204,3 +204,34 @@ body {
 .location-items {
     color: white;
 }
+
+.events::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 1px;
+    height: 100%;
+    width: 3px;
+    background: rgba(255, 255, 255, 0.247)
+}
+
+.events {
+    position: relative;
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.event {
+    display: flex;
+    flex-direction: row;
+}
+
+.marker{
+    position: relative;
+    left: -6px;
+    top: 24px;
+    fill: #F8B92A;
+    stroke:#2c2c2c;
+    stroke-width: 4px;
+}

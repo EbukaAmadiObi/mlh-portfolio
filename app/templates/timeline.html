@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Timeline{% endblock %}
+
+{% block content %}
+<div class="info-section">
+    <form method="POST" action="{{ url_for('post_time_line_post') }}">
+        <input type="text" name="name" placeholder="Name">
+        <input type="text" name="email" placeholder="example@domain.com">
+        <input type="text" name="content" placeholder="What have you been up to?">
+        <button type="submit">Add Timeline Event</button>
+    </form>
+
+    <div class="timeine">
+
+        <div class="events">
+            {% for p in timeline_posts%}
+                <div class="info-item event">
+                    <svg 
+                    class="marker"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    >
+                    <circle cx="9" cy="9" r="9"></circle>
+                    </svg>
+                    <h3>{{ p.content }} - {{ p.formatted_date }}</h3>
+                    <p>{{ p.email }}</p>
+                </div>
+
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
