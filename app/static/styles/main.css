@@ -224,7 +224,21 @@ body {
 
 .event {
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.event > *:nth-child(1) {
+    flex: 0 0 20px;
+    box-sizing: content-box;
+}
+
+
+
+.event > *:nth-child(3) {
+    flex-basis: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    margin-left: 20px;
 }
 
 .marker{
