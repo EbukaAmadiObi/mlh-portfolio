@@ -113,6 +113,11 @@ hobbies_data = [
         "description": "Love attending mixers and networking events, also organised a lot of them during uni, looking for a way to keep that going..."
     },
     {
+        "name": "Lifting",
+        "image": 'img/gym.png',
+        "description": "Gotta stay fit! (I rlly couldnt find a better photo)"
+    },
+    {
         "name": "Partying",
         "image": 'img/IMG_4206.jpg',
         "description": "What can I say"
