@@ -3,19 +3,22 @@
 {% block title %}About Ebuka{% endblock %}
 
 {% block content %}
-<form method="POST" action="{{ url_for('save_about') }}">
-    <div class="info-section">
-        <h2>About Me</h2>
-        <p id="about-editable" contenteditable="true" style="color: white;">
-            {{ about_me }}
-        </p>
-        <input type="hidden" name="about_me" id="about-me-hidden">
-        <button type="submit">Save About</button>
-    </div>
-</form>
-<script>
-document.querySelector('form').onsubmit = function() {
-    document.getElementById('about-me-hidden').value = document.getElementById('about-editable').innerText;
-};
-</script>
+<div class="info-section">
+    <h2>About Me</h2>
+    <p>
+        Hi, I’m Ebuka — I build cool stuff.
+    </p>    
+    <p>
+        I thrive in the space between complex systems and intuitive design, always looking to connect ideas in unexpected ways.
+        I build with a mix of hardware and software, think like, robots, LED matrices, and AI systems.
+    </p>
+    <p>
+        Collaboration fuels my process. I enjoy being part of teams where knowledge is shared, feedback is constructive, and 
+        learning is constant. Beyond the screen, you’ll find me attending social events (inevitably with other builders), in the gym, or exploring new tools.
+    </p>
+    <p>
+        This portfolio is a snapshot of my journey: the projects that challenged me, the ideas I shaped, and the experiences 
+        that shaped me. I’m always exploring what’s next—and always up for an interesting conversation.
+    </p>
+</div>
 {% endblock %}

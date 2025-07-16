@@ -35,41 +35,87 @@ class TimelinePost(Model):
 mydb.connect()
 mydb.create_tables([TimelinePost])
 
-about_me = "This is sample text. You can click here and replace with actual content about yourself." 
-
 work_experiences = [
     {
-        "job_title": "Software Engineer",
-        "company": "Tech Corp",
-        "dates": "Jan 2022 - Present",
-        "description": "Developing and maintaining web applications."
+        "job_title": "Production Engineering Fellow",
+        "company": "Major League Hacking",
+        "dates": "Jun 2025 - Present",
+        "description": "You know the deal."
     },
     {
-        "job_title": "Intern",
-        "company": "Startup Inc.",
-        "dates": "May 2021 - Aug 2021",
-        "description": "Assisted with front-end development."
+        "job_title": "Software Engineering Intern",
+        "company": "Arista Networks",
+        "dates": "May 2024 - Aug 2024",
+        "description": "Working on the Arista CloudVision Platform, a web-based portal that shows\
+                        it’s users the status of their network, lets them update it’s configuration, \
+                        and provides notifications to its users when something goes wrong. Focused on \
+                        network automation and visibility through dashboard metrics and alerts on \
+                        service level indicators. • Assisted in implementing a new feature in Go \
+                        to display the configuration of server hardware, implemented automated \
+                        testing and optimized performance to improve the user experience. \
+                        • Collaborated with the engineering team to ensure seamless integration \
+                        and deployment of network management solutions using Git and Jenkins."
+    },
+    {
+        "job_title": "Team Lead",
+        "company": "Google Developer Student Club",
+        "dates": "Jul 2023 - Jun 2024",
+        "description": "Partnered with Google to organise workshops, projects, and events \
+                        for students at my university. Managed a core team of 4 students to help create \
+                        a successful student organisation. Helped to increased club membership \
+                        by 370% over 3 months."
+    },
+    {
+        "job_title": "Apparel Designer",
+        "company": "Redbubble & Teepublic",
+        "dates": "Oct 2019 - Jun 2024",
+        "description": "Independent apparel designer at Redbubble and Teepublic \n\n \
+                        • Designed over 160 artworks to be sold on t-shirts, stickers, mugs and other products\n\
+                        • Researched current and popular niches to create impactful and trendy designs\n\
+                        • Sold over 9500 units total"
+    },
+    {
+        "job_title": "Assistant Lab Technician",
+        "company": "IGSL Ltd.",
+        "dates": "Jul 2021 - Aug 2021",
+        "description": "I performed detailed and methodical testing and analysis of soils, \
+                        rocks, concrete, and their properties as well as collaborated with \
+                        other technicians to gain a complete picture of the characteristics, \
+                        nature, and integrity of soil in sites before clearing them to begin \
+                        construction projects like the construction of a new Lidl location."
+    },
+    {
+        "job_title": "Freelance Graphic Designer",
+        "company": "myself",
+        "dates": "Feb 2020 - May 2021",
+        "description": "Designed logos and posters and other stuff for people in my community back in Kildare"
     }
+    
 ]
 
 education_history = [
     {
-        "degree": "Bachelor of Science in Computer Science",
-        "institution": "University of Technology",
-        "years": "2021 - 2025"
+        "degree": "Bachelor of Engineering in Electronic Engineering",
+        "institution": "University College Dublin",
+        "years": "Sept 2021 - Sept 2025"
     }
 ]
 
 hobbies_data = [
     {
-        "name": "Photography",
-        "image": 'img/logo.jpg',
-        "description": "Capturing moments and landscapes."
+        "name": "Engineering Projects",
+        "image": 'img/IMG_4431.JPG',
+        "description": "What kind of engineer would I be without them? Pictured above is a 3D LED matrix I built in 3rd year, led a small team of students to (almost) finish..."
     },
     {
-        "name": "Hiking",
-        "image": 'img/logo.jpg',
-        "description": "Exploring trails and nature."
+        "name": "Social Events",
+        "image": 'img/IMG_7187.JPG',
+        "description": "Love attending mixers and networking events, also organised a lot of them during uni, looking for a way to keep that going..."
+    },
+    {
+        "name": "Partying",
+        "image": 'img/IMG_4206.JPG',
+        "description": "What can I say"
     }
 ]
 
@@ -93,7 +139,7 @@ def index():
 
 @app.route('/about')
 def about():
-    return render_template('about.html', title="About Me", url=os.getenv("URL"), about_me=about_me)
+    return render_template('about.html', title="About Me", url=os.getenv("URL"))
 
 @app.route('/save_about', methods=['POST'])
 def save_about():
