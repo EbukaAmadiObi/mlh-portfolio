@@ -104,12 +104,12 @@ education_history = [
 hobbies_data = [
     {
         "name": "Engineering Projects",
-        "image": 'img/IMG_4431.JPG',
+        "image": 'img/IMG_4431.jpg',
         "description": "What kind of engineer would I be without them? Pictured above is a 3D LED matrix I built in 3rd year, led a small team of students to (almost) finish..."
     },
     {
         "name": "Social Events",
-        "image": 'img/IMG_7187.JPG',
+        "image": 'img/IMG_7187.jpg',
         "description": "Love attending mixers and networking events, also organised a lot of them during uni, looking for a way to keep that going..."
     },
     {
