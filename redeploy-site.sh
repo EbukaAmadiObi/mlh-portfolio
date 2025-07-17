@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 cd /root/mlh-portfolio/
 git fetch && git reset origin/main --hard
