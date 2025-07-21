@@ -66,12 +66,12 @@ class AppTestCase(unittest.TestCase):
     def test_malformed_timeline_post(self):
         # POST request missing name
         response = self.client.post("/api/timeline_post", data={"email": "salim@pinapplelover.com", "content": "Hello world, I'm Salim!"})
-        assert response.status_code == 500
+        assert response.status_code == 400
 
         # POST request with empty content
         response = self.client.post("/api/timeline_post", data={"name": "salim pinapple lover", "email": "salim@pinapplelover.com", "content": ""})
-        assert response.status_code == 500
+        assert response.status_code == 400
 
         # POST request with malformed email
         response = self.client.post("/api/timeline_post", data={"name": "salim pinapple lover", "email": "not-an-email", "content": "Hello world, I'm Salim!"})
-        assert response.status_code == 500
+        assert response.status_code == 400

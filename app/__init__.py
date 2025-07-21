@@ -1,4 +1,5 @@
 import os
+import re
 import logging
 import json
 import datetime
@@ -300,12 +301,34 @@ def post_time_line_post():
 
 @app.route('/api/timeline_post' , methods=['POST'])
 def api_post_time_line_post():
-    name = request.form['name']
-    email = request.form['email']
-    content = request.form['content']
-    timeline_post = TimelinePost.create(name=name, email=email, content=content)
 
-    return model_to_dict(timeline_post)
+    try:
+        name = request.form['name']
+        if name.strip() == "":
+            return "Invalid name", 400
+    except Exception as e:
+        app.logger.error(f"Error creating timeline post: {e}")
+        return "Invalid name", 400
+
+    try:
+        email = request.form['email']
+        email_regex = r'^[\w\.-]+@[\w\.-]+\.\w+$'
+        if not re.match(email_regex, email):
+            return "Invalid email format", 400
+    except Exception as e:
+        app.logger.error(f"Error creating timeline post: {e}")
+        return "Invalid email", 400
+
+    try:
+        content = request.form['content']
+        if content.strip() == "":
+            return "Invalid content", 400
+    except Exception as e:
+        app.logger.error(f"Error creating timeline post: {e}")
+        return "Invalid content", 400
+        
+    timeline_post = TimelinePost.create(name=name, email=email, content=content)
+    return jsonify(model_to_dict(timeline_post))
 
 
 @app.route('/api/timeline_post', methods=['GET'])
