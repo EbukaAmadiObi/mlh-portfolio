@@ -121,7 +121,7 @@ hobbies_data = [
     {
         "name": "Partying",
         "image": 'img/IMG_4206.jpg',
-        "description": "What can I say"
+        "description": "What can I say..."
     }
 ]
 
