@@ -30,6 +30,9 @@ jobs:
       - name: Print working directory
         run: pwd
 
+      - name: list files
+        run: ls -a
+
       - name: Run Tests
         run: ./run_test.sh
       
