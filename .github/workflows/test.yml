@@ -26,14 +26,8 @@ jobs:
 
       - name: Install Dependencies
         run: .venv/bin/pip install -r requirements.txt
-      
-      - name: Print working directory
-        run: pwd
-
-      - name: list files
-        run: ls -a
 
       - name: Run Tests
-        run: ./run_test.sh
+        run: ./run-test.sh
       
       
